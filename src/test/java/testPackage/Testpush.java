@@ -6,4 +6,8 @@ public class Testpush {
 	 System.out.println(); 
 	}
 
+	public void pushtogithub() {
+		 System.out.println(); 
+		}
+
 }
