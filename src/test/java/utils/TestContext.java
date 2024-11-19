@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
-import pageObjects.PG_001_LoginPage;
+import pageObjects.PG_001_Login;
 
 public class TestContext {
 
@@ -19,7 +19,7 @@ public class TestContext {
     private static ThreadLocal<JavascriptExecutor> jsExecutorThreadLocal = new ThreadLocal<>();
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
     private static ThreadLocal<String> sheetName = new ThreadLocal<>();
-    private static ThreadLocal<PG_001_LoginPage> login = new ThreadLocal<>();
+    private static ThreadLocal<PG_001_Login> login = new ThreadLocal<>();
     
     private static final Logger logger = Logger.getLogger(TestContext.class);
 
@@ -43,7 +43,7 @@ public class TestContext {
         WebDriverWait waitInstance = new WebDriverWait(driverInstance, Duration.ofSeconds(20));
         wait.set(waitInstance);  // Correctly set the WebDriverWait instance in the ThreadLocal
     }
-
+    
 
     // Getter and Setter for JavascriptExecutor
     public static JavascriptExecutor getJsExecutor() {
@@ -64,11 +64,11 @@ public class TestContext {
     }
 
     // Getter and Setter for Login Page Object
-    public static PG_001_LoginPage getLoginPage() {
+    public static PG_001_Login getLoginPage() {
         return login.get();
     }
 
-    public static void setLoginPage(PG_001_LoginPage loginPage) {
+    public static void setLoginPage(PG_001_Login loginPage) {
         login.set(loginPage);
     }
     

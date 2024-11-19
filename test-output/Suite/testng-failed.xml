@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="classes" name="LoginTest_Chrome(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="testPackage.TC_001_Login2">
+        <methods>
+          <include name="setUp"/>
+          <include name="validatelogin" invocation-numbers="1"/>
+          <include name="tearDown"/>
+          <include name="testDetails"/>
+          <include name="stopReports"/>
+          <include name="startReports"/>
+        </methods>
+      </class> <!-- testPackage.TC_001_Login2 -->
+    </classes>
+  </test> <!-- LoginTest_Chrome(failed) -->
+</suite> <!-- Failed suite [Suite] -->

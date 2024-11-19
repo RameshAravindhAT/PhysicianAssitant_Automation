@@ -1,0 +1,8 @@
+2024-11-19 10:57:49 INFO  BaseClass - Log4j configured successfully. (BaseClass.java:47)
+2024-11-19 10:57:51 INFO  ExtentReportManager - Extent Reports started at /home/navadhiti/git/PhysicianAssitant_Automation/ExtentReports/extentReports.html (ExtentReportManager.java:31)
+2024-11-19 10:58:08 INFO  TestContext - enterEmail thejaswini+dev@navadhiti.com (PG_001_Login.java:62)
+2024-11-19 10:58:08 INFO  TestContext - enterPassword Teju@555 (PG_001_Login.java:76)
+2024-11-19 10:58:09 INFO  TestContext - clickLoginButton (PG_001_Login.java:90)
+2024-11-19 10:58:12 INFO  BaseClass - Browser Closed (BaseClass.java:118)
+2024-11-19 10:58:12 INFO  BaseClass - ============================================================= (BaseClass.java:119)
+2024-11-19 10:58:14 INFO  ExtentReportManager - Extent Reports flushed successfully. (ExtentReportManager.java:74)

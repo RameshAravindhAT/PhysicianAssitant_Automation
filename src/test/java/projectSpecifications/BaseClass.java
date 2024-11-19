@@ -20,7 +20,7 @@ import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 
-import pageObjects.PG_001_LoginPage;
+import pageObjects.PG_001_Login;
 import utils.ExcelReader;
 import utils.ExtentReportManager;
 import utils.TestContext;
@@ -32,7 +32,7 @@ public class BaseClass {
     public static String logfile = Paths.get("src", "test", "java", "utils", "Log4j.properties").toAbsolutePath().toString();
 
     // Test data location
-    public static String excelfilename = Paths.get("TestData", "AllTeacherTestDatas.xlsx").toAbsolutePath().toString();
+    public static String excelfilename = Paths.get("TestData", "PAtestData.xlsx").toAbsolutePath().toString();
     public static String configFilePath = Paths.get("Properties", "Config.properties").toAbsolutePath().toString();
     public static Properties properties;
     public static FileInputStream file;
@@ -69,7 +69,7 @@ public class BaseClass {
         TestContext.setJsExecutor((JavascriptExecutor) driver);
 
         // Initialize the LoginPage object in TestContext
-        TestContext.setLoginPage(new PG_001_LoginPage(driver));
+        TestContext.setLoginPage(new PG_001_Login(driver));
     }
 
     // Initialize WebDriver based on the browser parameter
@@ -97,7 +97,7 @@ public class BaseClass {
     }
 
     // Fetch test data from Excel for the given sheet
-    @DataProvider(name = "sendData", parallel = true)
+    @DataProvider(name = "sendData", parallel = false,indices =1)
     public String[][] fetchData() throws IOException {
         if (TestContext.getSheetName() == null || TestContext.getSheetName().isEmpty()) {
             throw new IllegalStateException("Sheet name is not set.");
@@ -111,7 +111,7 @@ public class BaseClass {
         WebDriver driver = TestContext.getDriver();
         if (driver != null) {
             driver.quit(); // Quit WebDriver for this thread
-            TestContext.setDriver(null); // Remove the WebDriver instance from TestContext
+            //TestContext.setDriver(null); // Remove the WebDriver instance from TestContext
         }
 
         reportStep("Closing the Browser", "pass");
