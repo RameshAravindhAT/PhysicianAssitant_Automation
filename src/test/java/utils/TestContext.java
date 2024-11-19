@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 
 import pageObjects.PG_001_Login;
+import pageObjects.PG_001_LoginPage;
 
 public class TestContext {
 
@@ -43,7 +44,7 @@ public class TestContext {
         WebDriverWait waitInstance = new WebDriverWait(driverInstance, Duration.ofSeconds(20));
         wait.set(waitInstance);  // Correctly set the WebDriverWait instance in the ThreadLocal
     }
-    
+
 
     // Getter and Setter for JavascriptExecutor
     public static JavascriptExecutor getJsExecutor() {

@@ -10,8 +10,8 @@
           <include name="validatelogin" invocation-numbers="1"/>
           <include name="tearDown"/>
           <include name="testDetails"/>
-          <include name="stopReports"/>
           <include name="startReports"/>
+          <include name="stopReports"/>
         </methods>
       </class> <!-- testPackage.TC_001_Login2 -->
     </classes>

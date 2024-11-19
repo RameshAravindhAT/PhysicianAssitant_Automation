@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-19T10:57:51 IST" name="Suite" finished-at="2024-11-19T10:58:12 IST" duration-ms="21020">
+  <suite started-at="2024-11-19T16:18:03 IST" name="Suite" finished-at="2024-11-19T16:18:11 IST" duration-ms="8203">
     <groups>
     </groups>
-    <test started-at="2024-11-19T10:57:51 IST" name="LoginTest_Chrome" finished-at="2024-11-19T10:58:12 IST" duration-ms="21020">
+    <test started-at="2024-11-19T16:18:03 IST" name="LoginTest_Chrome" finished-at="2024-11-19T16:18:11 IST" duration-ms="8203">
       <class name="testPackage.TC_001_Login2">
-        <test-method is-config="true" signature="startReports()[pri:0, instance:testPackage.TC_001_Login2@2a65fe7c]" started-at="2024-11-19T10:57:48 IST" name="startReports" finished-at="2024-11-19T10:57:51 IST" duration-ms="2061" status="PASS">
+        <test-method is-config="true" signature="startReports()[pri:0, instance:testPackage.TC_001_Login2@30f842ca]" started-at="2024-11-19T16:18:03 IST" name="startReports" finished-at="2024-11-19T16:18:03 IST" duration-ms="288" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReports -->
-        <test-method is-config="true" signature="testDetails()[pri:0, instance:testPackage.TC_001_Login2@2a65fe7c]" started-at="2024-11-19T10:57:51 IST" name="testDetails" finished-at="2024-11-19T10:57:51 IST" duration-ms="6" status="PASS">
+        <test-method is-config="true" signature="testDetails()[pri:0, instance:testPackage.TC_001_Login2@30f842ca]" started-at="2024-11-19T16:18:03 IST" name="testDetails" finished-at="2024-11-19T16:18:03 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDetails -->
-        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:testPackage.TC_001_Login2@2a65fe7c]" started-at="2024-11-19T10:57:56 IST" name="setUp" finished-at="2024-11-19T10:58:07 IST" duration-ms="11377" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:testPackage.TC_001_Login2@30f842ca]" started-at="2024-11-19T16:18:04 IST" name="setUp" finished-at="2024-11-19T16:18:09 IST" duration-ms="4656" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -26,7 +26,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="validatelogin(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:testPackage.TC_001_Login2@2a65fe7c]" started-at="2024-11-19T10:58:07 IST" name="validatelogin" data-provider="sendData" finished-at="2024-11-19T10:58:11 IST" duration-ms="4062" status="FAIL">
+        <test-method signature="validatelogin(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:testPackage.TC_001_Login2@30f842ca]" started-at="2024-11-19T16:18:09 IST" name="validatelogin" data-provider="sendData" finished-at="2024-11-19T16:18:11 IST" duration-ms="2474" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -73,35 +73,27 @@ at org.testng.Assert.assertEquals(Assert.java:656)
 at org.testng.Assert.assertEquals(Assert.java:666)
 at pageObjects.PG_001_Login.verifytoastmessage(PG_001_Login.java:120)
 at testPackage.TC_001_Login2.validatelogin(TC_001_Login2.java:31)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
 at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-at java.base/java.lang.Thread.run(Thread.java:840)
+at org.testng.internal.invokers.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:81)
+at org.testng.internal.thread.Async$AsyncTask.run(Async.java:34)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+at java.base/java.lang.Thread.run(Thread.java:1583)
 ]]>
             </full-stacktrace>
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validatelogin -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testPackage.TC_001_Login2@2a65fe7c]" started-at="2024-11-19T10:58:11 IST" name="tearDown" finished-at="2024-11-19T10:58:12 IST" duration-ms="450" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testPackage.TC_001_Login2@30f842ca]" started-at="2024-11-19T16:18:11 IST" name="tearDown" finished-at="2024-11-19T16:18:11 IST" duration-ms="154" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="stopReports()[pri:0, instance:testPackage.TC_001_Login2@2a65fe7c]" started-at="2024-11-19T10:58:12 IST" name="stopReports" finished-at="2024-11-19T10:58:14 IST" duration-ms="2387" status="PASS">
+        <test-method is-config="true" signature="stopReports()[pri:0, instance:testPackage.TC_001_Login2@30f842ca]" started-at="2024-11-19T16:18:11 IST" name="stopReports" finished-at="2024-11-19T16:18:12 IST" duration-ms="322" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stopReports -->

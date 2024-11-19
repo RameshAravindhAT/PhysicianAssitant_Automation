@@ -21,6 +21,7 @@ import org.testng.annotations.Parameters;
 import com.aventstack.extentreports.ExtentReports;
 
 import pageObjects.PG_001_Login;
+import pageObjects.PG_001_LoginPage;
 import utils.ExcelReader;
 import utils.ExtentReportManager;
 import utils.TestContext;
@@ -97,7 +98,7 @@ public class BaseClass {
     }
 
     // Fetch test data from Excel for the given sheet
-    @DataProvider(name = "sendData", parallel = false,indices =1)
+    @DataProvider(name = "sendData",indices = 1, parallel = true)
     public String[][] fetchData() throws IOException {
         if (TestContext.getSheetName() == null || TestContext.getSheetName().isEmpty()) {
             throw new IllegalStateException("Sheet name is not set.");
@@ -111,7 +112,7 @@ public class BaseClass {
         WebDriver driver = TestContext.getDriver();
         if (driver != null) {
             driver.quit(); // Quit WebDriver for this thread
-            //TestContext.setDriver(null); // Remove the WebDriver instance from TestContext
+            TestContext.setDriver(null); // Remove the WebDriver instance from TestContext
         }
 
         reportStep("Closing the Browser", "pass");
