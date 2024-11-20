@@ -11,8 +11,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3  # This checks out the code from the repository
 
-    - name: Install dependencies (if necessary)
-      run: mvn clean install  # This installs the dependencies for your Maven project (if needed)
+    - name: Set up Java 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17.0.12'  # Specify Java version 17
 
     - name: Run Tests
       run: mvn test  # Run the tests with Maven
