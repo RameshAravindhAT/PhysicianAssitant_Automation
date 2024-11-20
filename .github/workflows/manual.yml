@@ -1,11 +1,17 @@
 name: Run Tests
 
 on:
-  workflow_dispatch:  # This enables manual trigger from the GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run tests on'
+        required: true
+        default: 'TestBranch'
 
 jobs:
   test:
     runs-on: windows-latest  # Run on Windows
+    if: github.ref == 'refs/heads/${{ github.event.inputs.branch }}'  # Ensure the job runs only for the selected branch
 
     steps:
     - name: Checkout code
