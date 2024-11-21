@@ -24,21 +24,12 @@ jobs:
         java-version: '17'  # Specify Java version 17
         distribution: 'temurin'  # Specify the Java distribution (Temurin is the recommended option)
 
-    - name: Set up ChromeDriver and Chrome
-      uses: actions/setup-chrome@v2  # Use an action to install Chrome and ChromeDriver on the runner
-      with:
-        version: 'latest'  # Install the latest version of Chrome and ChromeDriver
-
     - name: Set ChromeDriver path and Chrome path
       run: |
-        # Set environment variables for ChromeDriver and Chrome path
-        echo "CHROMEDRIVER_PATH=${{ steps.setup-chrome.outputs.chromedriver-path }}" >> $GITHUB_ENV
-        echo "CHROME_PATH=${{ steps.setup-chrome.outputs.chrome-path }}" >> $GITHUB_ENV
+        # Set the path to ChromeDriver and Chrome executable
+        echo "CHROMEDRIVER_PATH=C:\\path\\to\\chromedriver" >> $GITHUB_ENV  # Set the path to your locally installed ChromeDriver
+        echo "CHROME_PATH=C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" >> $GITHUB_ENV  # Set the path to your locally installed Chrome
+        echo "CHROME_HEADLESS=false" >> $GITHUB_ENV  # Set Chrome to run in non-headless mode (default mode)
 
-    - name: Run Tests in Headless Mode
-      run: |
-        # Set up the environment variables for headless Chrome
-        echo "CHROME_HEADLESS=false" >> $GITHUB_ENV  # Inform tests to run in headless mode
-
-        # Run tests with Maven
-        mvn test  # Execute the tests with Maven
+    - name: Run Tests
+      run: mvn test  # Run the tests with Maven
