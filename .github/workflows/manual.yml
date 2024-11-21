@@ -24,5 +24,10 @@ jobs:
         java-version: '17'  # Specify Java version 17
         distribution: 'temurin'  # Specify the Java distribution (Temurin is the recommended option)
 
+    - name: Set ChromeDriver path and Chrome path
+      run: |
+        echo "CHROMEDRIVER_PATH=C:\\path\\to\\chromedriver" >> $GITHUB_ENV  # Set the path to your locally installed ChromeDriver
+        echo "CHROME_PATH=C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" >> $GITHUB_ENV  # Set the path to your locally installed Chrome
+
     - name: Run Tests
       run: mvn test  # Run the tests with Maven
