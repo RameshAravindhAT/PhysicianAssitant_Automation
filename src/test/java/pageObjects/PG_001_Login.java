@@ -45,17 +45,17 @@ public class PG_001_Login {
 	@FindBy(xpath = "//p[contains(@id,'helper-text')]")
 	WebElement Passwordwarning;
 
-	@FindBy(xpath = "(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv'])[1]")
-	WebElement logouticon;
-
-	@FindBy(xpath = "//li[contains(text(),'Logout')]")
-	WebElement logoutbutton;
-
-	@FindBy(xpath = "//p[contains(text(),'Teju')]")
-	WebElement profilename;
-
 	@FindBy(xpath = "(//p[contains(text(),'Recordings')])")
 	WebElement recordingstabbutton;
+	
+	@FindBy(xpath="(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv'])[1]")
+	WebElement logouticon;
+	
+	@FindBy(xpath="//li[contains(text(),'Logout')]")
+	WebElement logoutbutton;
+	
+	@FindBy(xpath="//p[contains(text(),'Teju')]")
+	WebElement profilename;
 
 	// Method to enter email
 	public PG_001_Login Enter_Email(String email) throws InterruptedException {
@@ -156,6 +156,24 @@ public class PG_001_Login {
 			TestContext.getLogger().error(methodName);
 		}
 		return new PG_002_Recordings(TestContext.getDriver());
+	}
+	
+	public  PG_003_Logout  click_on_logout() {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		try {
+	Assert.assertEquals(profilename.getText(), "Teju");
+	
+	TestContext.getWait().until(ExpectedConditions.elementToBeClickable(logouticon)).click();
+	Thread.sleep(2000);
+	TestContext.getWait().until(ExpectedConditions.elementToBeClickable(logoutbutton)).click();
+	Thread.sleep(3000);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			TestContext.getLogger().error(methodName);
+		}
+		return new PG_003_Logout(TestContext.getDriver());
+
 	}
 
 }
