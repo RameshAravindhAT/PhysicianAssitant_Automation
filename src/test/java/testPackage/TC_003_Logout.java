@@ -1,12 +1,13 @@
 package testPackage;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import projectSpecifications.BaseClass;
 import utils.ExtentReportManager;
 import utils.TestContext;
-
+@Listeners(utils.CustomTestListener.class)
 public class TC_003_Logout extends BaseClass{
 	@BeforeClass
     public void testDetails() {
@@ -32,6 +33,7 @@ public void validate_logout(String testNameDetails, String authorName, String ca
 	.verify_toast_message(testCaseType)
 	.click_on_logout()
 	.Verify_the_URL();
+	
 
 	
      

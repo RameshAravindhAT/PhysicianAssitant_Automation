@@ -7,11 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import projectSpecifications.BaseClass;
 import utils.ExtentReportManager;
 import utils.TestContext;
 
-public class PG_001_Login {
-
+public class PG_001_Login extends BaseClass{
+	String Loginmessage = "Login successful";
 	public PG_001_Login(WebDriver driver) {
 		TestContext.setDriver(driver);
 		PageFactory.initElements(driver, this); // Initialize elements
@@ -59,7 +60,10 @@ public class PG_001_Login {
 
 	// Method to enter email
 	public PG_001_Login Enter_Email(String email) throws InterruptedException {
+		ExtentReportManager.reportStep("Opening the Browser", "Pass");
+		ExtentReportManager.reportStep("Navigating to the URL"+properties.getProperty("url"), "pass");
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		
 		try {
 			emailField.sendKeys(email);
 			ExtentReportManager.reportStep(methodName + " " + email, "pass");
@@ -104,6 +108,7 @@ public class PG_001_Login {
 
 	public PG_001_Login verify_toast_message(String testCaseType) throws InterruptedException {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		
 		try {
 			switch (testCaseType) {
 
@@ -111,6 +116,7 @@ public class PG_001_Login {
 				Thread.sleep(30000);
 				OTPButton.click();
 				TestContext.getWait().until(ExpectedConditions.visibilityOf(loginSuccessMessage));
+				
 				Assert.assertEquals(loginSuccessMessage.getText(), "Login successful");
 				break;
 
@@ -131,7 +137,8 @@ public class PG_001_Login {
 
 			}
 
-			ExtentReportManager.reportStep(methodName, "pass");
+			ExtentReportManager.reportStep(methodName+ " " +Loginmessage, "pass");
+			
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
 
@@ -162,11 +169,13 @@ public class PG_001_Login {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 	Assert.assertEquals(profilename.getText(), "Teju");
-	
+	Thread.sleep(2000);
 	TestContext.getWait().until(ExpectedConditions.elementToBeClickable(logouticon)).click();
 	Thread.sleep(2000);
 	TestContext.getWait().until(ExpectedConditions.elementToBeClickable(logoutbutton)).click();
 	Thread.sleep(3000);
+	ExtentReportManager.reportStep(methodName, "pass");
+	TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
 
 			e.printStackTrace();

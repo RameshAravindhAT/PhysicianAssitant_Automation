@@ -48,10 +48,6 @@ public class PG_002_Recordings {
 	@FindBy(xpath = "//button[@title='Clear value']")
 	WebElement cleardate;
 
-	/*
-	 * @FindBy(xpath = "//p[contains(text(),'REC-1782')]") WebElement REcordingcode;
-	 */
-
 	@FindBy(xpath = "(//p[text()='REC-1782']//following::button)[1])")
 	WebElement viewrecording;
 
@@ -72,14 +68,7 @@ public class PG_002_Recordings {
 
 	@FindBy(xpath = "(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv'])[4]")
 	WebElement moreicon;
-	
-	
-	
-	
-	/*
-	 * @FindBy(xpath = "//p[starts-with(text(),'REC-1776')]") WebElement
-	 * viewrecording;
-	 */
+
 
 	@FindBy(xpath = "(//*[contains(@data-testid,'EditIcon')])[1]")
 	WebElement Editicon;
