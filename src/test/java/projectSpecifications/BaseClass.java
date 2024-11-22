@@ -21,7 +21,6 @@ import org.testng.annotations.Parameters;
 import com.aventstack.extentreports.ExtentReports;
 
 import pageObjects.PG_001_Login;
-import pageObjects.PG_001_LoginPage;
 import utils.ExcelReader;
 import utils.ExtentReportManager;
 import utils.TestContext;
@@ -98,7 +97,7 @@ public class BaseClass {
     }
 
     // Fetch test data from Excel for the given sheet
-    @DataProvider(name = "sendData",indices = 1, parallel = true)
+    @DataProvider(name = "sendData", indices=0,parallel = false)
     public String[][] fetchData() throws IOException {
         if (TestContext.getSheetName() == null || TestContext.getSheetName().isEmpty()) {
             throw new IllegalStateException("Sheet name is not set.");

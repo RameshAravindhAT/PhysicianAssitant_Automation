@@ -5,16 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import utils.ExtentReportManager;
 import utils.TestContext;
 
 public class PG_001_Login {
-
-	WebDriver driver;
-	WebDriverWait wait;
 
 	public PG_001_Login(WebDriver driver) {
 		TestContext.setDriver(driver);
@@ -48,18 +44,26 @@ public class PG_001_Login {
 
 	@FindBy(xpath = "//p[contains(@id,'helper-text')]")
 	WebElement Passwordwarning;
-	
-	@FindBy(xpath="(//p[contains(text(),'Recordings')])")
+
+	@FindBy(xpath = "(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv'])[1]")
+	WebElement logouticon;
+
+	@FindBy(xpath = "//li[contains(text(),'Logout')]")
+	WebElement logoutbutton;
+
+	@FindBy(xpath = "//p[contains(text(),'Teju')]")
+	WebElement profilename;
+
+	@FindBy(xpath = "(//p[contains(text(),'Recordings')])")
 	WebElement recordingstabbutton;
 
-
 	// Method to enter email
-	public PG_001_Login enterEmail(String email) throws InterruptedException {
-		 String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+	public PG_001_Login Enter_Email(String email) throws InterruptedException {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 			emailField.sendKeys(email);
-			  ExtentReportManager.reportStep(methodName + " " + email, "pass");
-	            TestContext.getLogger().info(methodName + " " + email);
+			ExtentReportManager.reportStep(methodName + " " + email, "pass");
+			TestContext.getLogger().info(methodName + " " + email);
 		} catch (Exception e) {
 			TestContext.getLogger().error(methodName + " " + email);
 			e.printStackTrace();
@@ -68,99 +72,90 @@ public class PG_001_Login {
 	}
 
 	// Method to enter password
-	public PG_001_Login enterPassword(String password) throws InterruptedException {
+	public PG_001_Login Enter_Password(String password) throws InterruptedException {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 			passwordField.sendKeys(password);
 			ExtentReportManager.reportStep(methodName + " " + password, "pass");
-	         TestContext.getLogger().info(methodName + " " + password);
+			TestContext.getLogger().info(methodName + " " + password);
 		} catch (Exception e) {
 			TestContext.getLogger().error(methodName + " " + password);
 			e.printStackTrace();
 		}
-		 
+
 		return this;
 	}
+
 	// Method to click login button
-	public PG_001_Login clickLoginButton() throws InterruptedException {
+	public PG_001_Login Click_on_Login_Button() throws InterruptedException {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-        try {
-            loginButton.click();
-            ExtentReportManager.reportStep(methodName, "pass");
-            TestContext.getLogger().info(methodName);
-        } catch (Exception e) {
-            
-            e.printStackTrace();
-            TestContext.getLogger().error(methodName);
-        }
+		try {
+			loginButton.click();
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			TestContext.getLogger().error(methodName);
+		}
 		return this;
 
 	}
 
-	
-	
+	public PG_001_Login verify_toast_message(String testCaseType) throws InterruptedException {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		try {
+			switch (testCaseType) {
 
-	public PG_001_Login verifytoastmessage(String testCaseType) throws InterruptedException {
-		 String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-		 try 
-		 {
-			 switch (testCaseType) {
-				
-				case "Positive":
-					Thread.sleep(30000);
-					OTPButton.click();
-					TestContext.getWait().
-					until(ExpectedConditions.visibilityOf(loginSuccessMessage));			
-					Assert.assertEquals(loginSuccessMessage.getText(), "Login successful");
-					break;
+			case "Positive":
+				Thread.sleep(30000);
+				OTPButton.click();
+				TestContext.getWait().until(ExpectedConditions.visibilityOf(loginSuccessMessage));
+				Assert.assertEquals(loginSuccessMessage.getText(), "Login successful");
+				break;
 
-				case "Negative":
-					TestContext.getWait().
-					until(ExpectedConditions.visibilityOf(invalidcredentialsmessage));
-					Assert.assertEquals(invalidcredentialsmessage.getText(), "Invalid ");
-					 
-					break;
+			case "Negative":
+				TestContext.getWait().until(ExpectedConditions.visibilityOf(invalidcredentialsmessage));
+				Assert.assertEquals(invalidcredentialsmessage.getText(), "Invalid Credentials");
+				break;
 
-				case "Emailwarning":
-					TestContext.getWait().until(ExpectedConditions.visibilityOf(Emailwarning));
-					Assert.assertEquals(Emailwarning.getText(), "Email cannot be empty");
-					 
-					break;
+			case "Emailwarning":
+				TestContext.getWait().until(ExpectedConditions.visibilityOf(Emailwarning));
+				Assert.assertEquals(Emailwarning.getText(), "Email cannot be empty");
+				break;
 
-				case "Passwordwarning":
-					TestContext.getWait().until(ExpectedConditions.visibilityOf(Passwordwarning));
-					Assert.assertEquals(Passwordwarning.getText(), "Password cannot be empty");
-					break;
+			case "Passwordwarning":
+				TestContext.getWait().until(ExpectedConditions.visibilityOf(Passwordwarning));
+				Assert.assertEquals(Passwordwarning.getText(), "Password cannot be empty");
+				break;
 
-				} 
-		 
-			 ExtentReportManager.reportStep(methodName, "pass");
-	         TestContext.getLogger().info(methodName);
-		 }
-			 catch (Exception e) {
-					
-					e.printStackTrace();
-					TestContext.getLogger().error(methodName);
-				
-		 }
-		
+			}
+
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			TestContext.getLogger().error(methodName);
+
+		}
+
 		return this;
 	}
-	
-	public PG_002_Recordings clickonrecordings() throws InterruptedException {
+
+	public PG_002_Recordings click_on_recordings_tab() throws InterruptedException {
 		Thread.sleep(15000);
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 			recordingstabbutton.click();
-			 ExtentReportManager.reportStep(methodName, "pass");
-	            TestContext.getLogger().info(methodName);
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 			TestContext.getLogger().error(methodName);
 		}
-		return new PG_002_Recordings(driver);
+		return new PG_002_Recordings(TestContext.getDriver());
 	}
-	
-	
+
 }
