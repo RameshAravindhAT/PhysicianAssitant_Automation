@@ -49,6 +49,9 @@ public class PG_001_Login extends BaseClass{
 	@FindBy(xpath = "(//p[contains(text(),'Recordings')])")
 	WebElement recordingstabbutton;
 	
+	@FindBy(xpath = "(//p[contains(text(),'Keyword')])")
+	WebElement keywordbutton;
+	
 	@FindBy(xpath="(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv'])[1]")
 	WebElement logouticon;
 	
@@ -66,13 +69,15 @@ public class PG_001_Login extends BaseClass{
 		
 		try {
 			emailField.sendKeys(email);
-			ExtentReportManager.reportStep(methodName + " " + email, "pass");
-			TestContext.getLogger().info(methodName + " " + email);
+			ExtentReportManager.reportStep(methodName + " :: " + email, "pass");
+			TestContext.getLogger().info(methodName + " :: " + email);
 		} catch (Exception e) {
-			TestContext.getLogger().error(methodName + " " + email);
+			TestContext.getLogger().error(methodName + " :: " + email);
 			e.printStackTrace();
 		}
 		return this;
+		
+		
 	}
 
 	// Method to enter password
@@ -80,10 +85,10 @@ public class PG_001_Login extends BaseClass{
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 			passwordField.sendKeys(password);
-			ExtentReportManager.reportStep(methodName + " " + password, "pass");
-			TestContext.getLogger().info(methodName + " " + password);
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName + " :: " + password);
 		} catch (Exception e) {
-			TestContext.getLogger().error(methodName + " " + password);
+			TestContext.getLogger().error(methodName);
 			e.printStackTrace();
 		}
 
@@ -94,6 +99,7 @@ public class PG_001_Login extends BaseClass{
 	public PG_001_Login Click_on_Login_Button() throws InterruptedException {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
+			Thread.sleep(3000);
 			loginButton.click();
 			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
@@ -137,7 +143,7 @@ public class PG_001_Login extends BaseClass{
 
 			}
 
-			ExtentReportManager.reportStep(methodName+ " " +Loginmessage, "pass");
+			ExtentReportManager.reportStep(methodName+ " :: " +Loginmessage, "pass");
 			
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
@@ -158,12 +164,25 @@ public class PG_001_Login extends BaseClass{
 			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
-
 			e.printStackTrace();
 			TestContext.getLogger().error(methodName);
 		}
 		return new PG_002_Recordings(TestContext.getDriver());
 	}
+	
+	public PG_002_Recordings click_on_Keyword_tab() throws InterruptedException {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		try {
+			keywordbutton.click();
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName);
+			}catch (Exception e) {
+				e.printStackTrace();
+				TestContext.getLogger().error(methodName);
+			}
+			return new PG_002_Recordings(TestContext.getDriver());
+		}
+		
 	
 	public  PG_003_Logout  click_on_logout() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");

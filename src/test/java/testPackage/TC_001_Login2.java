@@ -10,7 +10,6 @@ import utils.TestContext;
 
 @Listeners(utils.CustomTestListener.class)  
 public class TC_001_Login2 extends BaseClass {
-	
 	  @BeforeClass
 	    public void testDetails() {
 	        // Set the sheet name for the test

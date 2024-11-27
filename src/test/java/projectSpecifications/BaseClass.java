@@ -54,7 +54,6 @@ public class BaseClass {
         // Start ExtentReports
         extent = ExtentReportManager.startReports();
     }
-
     // Initialize WebDriver and other resources per thread before each test
     @BeforeMethod
     @Parameters({"browser"})
@@ -97,7 +96,7 @@ public class BaseClass {
     }
 
     // Fetch test data from Excel for the given sheet
-    @DataProvider(name = "sendData", indices=0,parallel = false)
+    @DataProvider(name = "sendData", parallel = false)
     public String[][] fetchData() throws IOException {
         if (TestContext.getSheetName() == null || TestContext.getSheetName().isEmpty()) {
             throw new IllegalStateException("Sheet name is not set.");

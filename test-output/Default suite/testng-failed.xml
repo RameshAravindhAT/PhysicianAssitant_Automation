@@ -7,10 +7,10 @@
         <methods>
           <include name="validate_recordings"/>
           <include name="setUp"/>
-          <include name="testcasedetails"/>
           <include name="tearDown"/>
-          <include name="stopReports"/>
+          <include name="testcasedetails"/>
           <include name="startReports"/>
+          <include name="stopReports"/>
         </methods>
       </class> <!-- testPackage.TC_002_Recordings -->
     </classes>

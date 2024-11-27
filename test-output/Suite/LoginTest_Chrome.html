@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>LoginTest_Chrome</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Nov 22 17:54:39 IST 2024</td>
+<td>Started on:</td><td>Wed Nov 27 16:59:50 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>75 seconds (75714 ms)</td>
+<tr><td>Total time:</td><td>1 seconds (1763 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,8 +67,8 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td><b>Attribute(s)</b></td>
 <td width="30%"><b>Exception</b></td>
@@ -76,10 +76,39 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='testPackage.TC_003_Logout.validate_logout()'><b>validate_logout</b><br>Test class: testPackage.TC_003_Logout<br>Parameters: Validate login feature with valid credentials, Teju, Regression, thejaswini+devscribe@navadhiti.com, Teju@5555, Positive</td>
-<td></td>
-<td>55</td>
-<td>testPackage.TC_003_Logout@34a3d150</td></tr>
+<td title='testPackage.TC_002_Recordings.validate_recordings()'><b>validate_recordings</b><br>Test class: testPackage.TC_002_Recordings</td>
+<td><div><pre>org.testng.internal.reflect.MethodMatcherException: 
+[public void testPackage.TC_002_Recordings.validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.InterruptedException] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
+Data provider mismatch
+Method: validate_recordings([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7])
+Arguments: [(java.lang.String) Validate login feature with valid credentials and filestatus Flow,(java.lang.String) Teju,(java.lang.String) Regression,(java.lang.String) thejaswini+devscribe@navadhiti.com,(java.lang.String) Teju@5555,(java.lang.String) Positive,(java.lang.String) Teju two,(java.lang.String) `27/09/2024`,(java.lang.String) ,(java.lang.String) ]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+... Removed 8 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace889891980", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace889891980'><pre>org.testng.internal.reflect.MethodMatcherException: 
+[public void testPackage.TC_002_Recordings.validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.InterruptedException] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
+Data provider mismatch
+Method: validate_recordings([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7])
+Arguments: [(java.lang.String) Validate login feature with valid credentials and filestatus Flow,(java.lang.String) Teju,(java.lang.String) Regression,(java.lang.String) thejaswini+devscribe@navadhiti.com,(java.lang.String) Teju@5555,(java.lang.String) Positive,(java.lang.String) Teju two,(java.lang.String) `27/09/2024`,(java.lang.String) ,(java.lang.String) ]
+	at org.testng.internal.reflect.DataProviderMethodMatcher.getConformingArguments(DataProviderMethodMatcher.java:46)
+	at org.testng.internal.Parameters.injectParameters(Parameters.java:915)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</pre></div></td>
+<td>1</td>
+<td>testPackage.TC_002_Recordings@4135c3b</td></tr>
 </table><p>
 </body>
 </html>

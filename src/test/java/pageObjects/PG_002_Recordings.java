@@ -3,6 +3,7 @@ package pageObjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,20 +11,16 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import projectSpecifications.BaseClass;
 import utils.ExtentReportManager;
 import utils.TestContext;
 
-public class PG_002_Recordings {
-
-	String targetMonthYear = "September 2024";
-	String targetdate = "27";
-	String targetyear = "2024";
+public class PG_002_Recordings extends BaseClass{
 	
 	public PG_002_Recordings(WebDriver driver) {
 		TestContext.setDriver(driver);
 		PageFactory.initElements(driver, this); // Initialize elements
 	}
-
 	@FindBy(xpath = "(//*[name()='svg'][@aria-label='Refresh'])[1]")
 	WebElement refreshbutton;
 
@@ -48,9 +45,6 @@ public class PG_002_Recordings {
 	@FindBy(xpath = "//button[@title='Clear value']")
 	WebElement cleardate;
 
-	@FindBy(xpath = "(//p[text()='REC-1782']//following::button)[1])")
-	WebElement viewrecording;
-
 	@FindBy(xpath = "(//div[@data-field='doctor_name']//div[contains(text(),'Teju two')])[1]")
 	WebElement doctorname;
 
@@ -69,27 +63,37 @@ public class PG_002_Recordings {
 	@FindBy(xpath = "(//*[name()='svg'][@class='MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv'])[4]")
 	WebElement moreicon;
 
-
-	@FindBy(xpath = "(//*[contains(@data-testid,'EditIcon')])[1]")
+	@FindBy(xpath = "(//*[name()='svg'][@data-testid='EditIcon'])[1]")
 	WebElement Editicon;
 
-	@FindBy(xpath = "//div[contains(@class, 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-multiline')]")
+	@FindBy(xpath = "//div[contains(@class,'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary')]//textarea")
 	WebElement Editbox;
 
-	/*
-	 * public PG_002_Recordings clickonrefresh() throws InterruptedException {
-	 * String methodName =
-	 * Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-	 * try { Thread.sleep(2000); refreshbutton.click();
-	 * ExtentReportManager.reportStep(methodName, "pass");
-	 * TestContext.getLogger().info(methodName); } catch (Exception e) {
-	 * TestContext.getLogger().error(methodName); e.printStackTrace(); } return
-	 * this; }
-	 */
+	@FindBy(xpath = "//button[text()='Cancel']")
+	WebElement cancelbutton;
+
+	@FindBy(xpath = "//button[text()='Next']")
+	WebElement Nextbutton;
+
+	@FindBy(xpath = "//button[text()='Save']")
+	WebElement savebutton;
+
+	@FindBy(xpath = "//button[text()='No']")
+	WebElement Nobutton;
+
+	@FindBy(xpath = "//button[text()='Yes']")
+	WebElement yesbutton;
+
+	@FindBy(xpath = "//div[text()='Note updated successfully.']")
+	WebElement Updatednotestoastmessage;
+
+	@FindBy(xpath = "//button[text()='Undo']")
+	WebElement undobutton;
 
 	public PG_002_Recordings click_on_reset() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
+
 			refreshbutton.click();
 			Resetbutton.click();
 			ExtentReportManager.reportStep(methodName, "pass");
@@ -104,6 +108,7 @@ public class PG_002_Recordings {
 	public PG_002_Recordings Select_doctor(String DoctorName) {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
+			Thread.sleep(2000);
 			doctorsdropdownbutton.click();
 			List<WebElement> doctoroptions = TestContext.getDriver()
 					.findElements((By.xpath("//ul[@role='listbox']/li")));
@@ -113,7 +118,7 @@ public class PG_002_Recordings {
 					break;
 				}
 			}
-			ExtentReportManager.reportStep(methodName, "pass");
+			ExtentReportManager.reportStep(methodName + " :: " + DoctorName, "pass");
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
 			TestContext.getLogger().error(methodName);
@@ -122,51 +127,76 @@ public class PG_002_Recordings {
 		return this;
 	}
 
-	public PG_002_Recordings select_date_in_calender() throws InterruptedException {
-		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-		try {
-			calendericon.click();
-			Thread.sleep(4000);
-			yearbutton.click();
-			TestContext.getDriver().findElement(By.xpath("//button[contains(text(),'" + targetyear + "')]")).click();
-			Thread.sleep(4000);
-			while (true) {
-				// Get the currently displayed month and year
-				String currentMonthYear = TestContext.getDriver()
-						.findElement(By.xpath("//div[contains(@id,'grid-label')]")).getText();
-				if (currentMonthYear.equals(targetMonthYear)) {
-					break;
-				} else {
-					// Navigate to previous or next month depending on the target
-					if (currentMonthYear.compareTo(targetMonthYear) > 0) {
-						previousmonth.click();
-						Thread.sleep(2000);
-					} else {
-						
-						Nextmonth.click();
-					}
-				}
-			}
-			Thread.sleep(3000);
-			TestContext.getDriver().findElement(By.xpath("//button[normalize-space()='" + targetdate + "']")).click();
-			Thread.sleep(5000);
-			ExtentReportManager.reportStep(methodName, "pass");
-			TestContext.getLogger().info(methodName);
-		} catch (Exception e) {
+		public PG_002_Recordings select_date(String Targetdate) throws InterruptedException {
+		    String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		    try {
+		        // Split the target date into parts (e.g., "27 September 2024")
+		        String[] parts = Targetdate.split(" ");
+		        String targetDay = parts[0];             // 27
+		        String targetMonthYear = parts[1] + " " + parts[2]; // September 2024
+		        String targetYear = parts[2];           // 2024
+		        calendericon.click();
+		        Thread.sleep(3000);
+		        yearbutton.click();
+		        WebElement targetYearElement = TestContext.getDriver()
+		                .findElement(By.xpath("//button[contains(text(),'" + targetYear + "')]"));
+		        targetYearElement.click();
+		        Thread.sleep(3000);
+		        // Navigate to the correct month
+		        while (true) {
+		            String currentMonthYear = TestContext.getDriver()
+		                    .findElement(By.xpath("//div[contains(@id,'grid-label')]")).getText();
 
-			e.printStackTrace();
-			TestContext.getLogger().error(methodName);
+		            if (currentMonthYear.equals(targetMonthYear)) {
+		                break; // Correct month-year found
+		            }
+		            // Determine direction for navigation
+		            WebElement navigationButton = currentMonthYear.compareTo(targetMonthYear) > 0 ? Nextmonth : previousmonth;
+		            TestContext.getWait().until(ExpectedConditions.elementToBeClickable(navigationButton)).click();
+		        }
+
+		        Thread.sleep(3000);
+		        WebElement targetDateElement = TestContext.getDriver()
+		                .findElement(By.xpath("//button[normalize-space()='" + targetDay + "']"));
+		        targetDateElement.click();
+		        Thread.sleep(2000);
+
+		        // Log the selected date
+		        String selectedDate = Targetdate;
+		        ExtentReportManager.reportStep("Selected date: " + selectedDate, "pass");
+		        TestContext.getLogger().info(methodName);
+
+		    } catch (Exception e) {
+		        TestContext.getLogger().error(methodName);
+		        e.printStackTrace();
+		    }
+		    return this;
 		}
-		return this;
-	}
 
 	/*
-	 * public PG_002_Recordings clickcleardateicon() { String methodName =
-	 * Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-	 * try {
+	 * public PG_002_Recordings select_date() throws InterruptedException { String
+	 * targetMonthYear = "September 2024"; String targetdate = "27";
+	 * Stringtargetyear = "2024"; String methodName
+	 * =Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+	 * try { calendericon.click(); Thread.sleep(3000); yearbutton.click(); // Select
+	 * the target year WebElement targetYearElement =
+	 * TestContext.getDriver().findElement(By.xpath("//button[contains(text(),'" +
+	 * targetyear + "')]")); targetYearElement.click(); Thread.sleep(5000); // Loop
+	 * to navigate to the correct month while (true) { String currentMonthYear =
+	 * TestContext.getDriver()
+	 * .findElement(By.xpath("//div[contains(@id,'grid-label')]")).getText();
 	 * 
-	 * 
-	 * cleardate.click(); ExtentReportManager.reportStep(methodName, "pass");
+	 * if (currentMonthYear.equals(targetMonthYear)) { break; // Target month-yearis
+	 * displayed, exit loop } // Determine navigation direction WebElement
+	 * navigationButton = currentMonthYear.compareTo(targetMonthYear) > 0 ?
+	 * Nextmonth : previousmonth;
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(
+	 * navigationButton)).click(); } Thread.sleep(3000); // Select the target date
+	 * WebElement targetDateElement = TestContext.getDriver()
+	 * .findElement(By.xpath("//button[normalize-space()='" + targetdate + "']"));
+	 * targetDateElement.click(); Thread.sleep(2000); String selectedDate =
+	 * targetdate + " " + targetMonthYear;
+	 * ExtentReportManager.reportStep("Selected date: " + selectedDate, "pass");
 	 * TestContext.getLogger().info(methodName); } catch (Exception e) {
 	 * TestContext.getLogger().error(methodName); e.printStackTrace(); } return
 	 * this; }
@@ -175,65 +205,12 @@ public class PG_002_Recordings {
 	public PG_002_Recordings click_on_view_recording() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
-			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(viewrecording)).click();
-		} catch (Exception e) {
-			TestContext.getLogger().error(methodName);
-			e.printStackTrace();
-		}
-		return this;
-	}
 
-	public PG_002_Recordings validateDynamicData( ) {
-		String[] data1 = { "Teju two", "REC-1782","scribe review pending"  };
-	    String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-	    try {
-	        // Ensure `data` is valid and contains all required fields
-	        if (data1 == null || data1.length != 3) {
-	            throw new IllegalArgumentException("Data array must contain exactly three values: [DoctorName, FileStatus, RecCode]");
-	        }
-
-	        // Array of XPaths to validate
-	        String[] xpaths = {
-	            "(//div[contains(@class,'MuiStack-root')])[2]//p[text()='" + data1[0] + "']", // DoctorName
-	            
-	        "//p[contains(@class, 'MuiTypography-body1') and starts-with(text(), 'Recording id : '" + data1[2] + "'') " ,// RecCode
-	        "//p[contains(@class, 'MuiTypography-root MuiTypography') and starts-with(text(), 'File status : '" + data1[1] + "'')" // FileStatus
-	        };
-
-	        // Loop through XPaths and validate
-	        for (int i = 0; i < xpaths.length; i++) {
-	            // Locate the element using the current XPath
-	            WebElement element = TestContext.getDriver().findElement(By.xpath(xpaths[i]));
-
-	            // Assert the element is displayed
-	            Assert.assertTrue(element.isDisplayed(), "Element not displayed for XPath: " + xpaths[i]);
-
-	            // Log success for each element
-	            String fieldName = (i == 0) ? "DoctorName" : (i == 1) ? "FileStatus" : "RecCode";
-	            ExtentReportManager.reportStep("Validated " + fieldName + ": " + data1[i], "pass");
-	            TestContext.getLogger().info("Validated " + fieldName + ": " + data1[i]);
-	        }
-
-	        // Log overall success
-	        ExtentReportManager.reportStep(methodName, "pass");
-	        TestContext.getLogger().info(methodName);
-
-	    } catch (Exception e) {
-	        // Log the error with context
-	        TestContext.getLogger().error("Error in " + methodName + ": " + e.getMessage());
-	        e.printStackTrace();
-	    }
-
-	    return this;
-	}
-
-
-	public PG_002_Recordings click_on_Editicon() throws InterruptedException {
-		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-		try {
-
-			Thread.sleep(10000);
-			Editicon.click();
+			TestContext.getWait()
+					.until(ExpectedConditions.elementToBeClickable(
+							By.xpath("(//div[@class='MuiDataGrid-row'])[1]//div[@data-field='actions']//button")))
+					.click();
+			Thread.sleep(6000);
 			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
@@ -243,37 +220,73 @@ public class PG_002_Recordings {
 		return this;
 	}
 
-	/*
-	 * public PG_002_Recordings select_doctor() { String methodName =
-	 * Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-	 * try { List<WebElement> doctoroptions =
-	 * TestContext.getDriver().findElements((By.xpath("//ul[@role='listbox']/li")));
-	 * for (WebElement webelement : doctoroptions) { if
-	 * (webelement.getText().trim().equals("Teju two")) { webelement.click(); break;
-	 * } } ExtentReportManager.reportStep(methodName, "pass");
-	 * TestContext.getLogger().info(methodName); } catch (Exception e) {
-	 * TestContext.getLogger().error(methodName); e.printStackTrace(); } return
-	 * this;
-	 * 
-	 * }
-	 */
-
-	public PG_002_Recordings Enterdataineditbox() {
+	public PG_002_Recordings validate_recording_File_fields() {
+		String[] expectedData = { "Teju two", "REC-1782", "scribe review pending" };
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
-			Editbox.clear();
-			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//div[contains(@class, 'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-multiline')]")))
-					.sendKeys("JoeThomas");
+			// Validate that the array has all required values
+			if (expectedData == null || expectedData.length != 3) {
+				throw new IllegalArgumentException(
+						"Expected data must contain exactly three values: [DoctorName, RecordingCode, FileStatus]");
+			}
+			// Map of field names to their corresponding dynamic XPath templates
+			String[] xpaths = {
+					"(//div[contains(@class,'MuiStack-root')])[2]//p[text()='Dr. 'and '" + expectedData[0] + "' ]", // DoctorName
+
+					"(//div[contains(@class,'MuiStack-root')])[2]//p[text()='Recording id : ' and '" + expectedData[1]
+							+ "']", // RecordingCode
+
+					"(//div[contains(@class,'MuiStack-root')])[2]//p[text()='File status :']/following-sibling::p[text()='"
+							+ expectedData[2] + "']" };
+			// Field names for better logging
+
+			// Validate each field
+			for (int i = 0; i < xpaths.length; i++) {
+				WebElement element = TestContext.getWait()
+						.until(ExpectedConditions.elementToBeClickable(By.xpath(xpaths[i])));
+				String actualText = element.getText().replaceAll("(?i)dr\\. |recording id :|file status :", "").trim()
+						.toLowerCase(); // Remove prefixes and normalize case
+				String expectedText = expectedData[i].trim().toLowerCase(); // Normalize case
+				Assert.assertEquals(actualText, expectedText);
+			}
+			// Log overall success
 			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
+			// Log any errors encountered during execution
 			TestContext.getLogger().error(methodName);
 			e.printStackTrace();
 		}
 		return this;
 	}
-	
-	
-	
+
+	public PG_002_Recordings update_patient_name() {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		try {
+			Thread.sleep(3000);
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editicon)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox)).sendKeys(Keys.CONTROL + "a");
+			Editbox.sendKeys(Keys.DELETE);
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox)).sendKeys("Martin Mathew");
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Nextbutton)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click(); // save
+																										// functionality
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(yesbutton)).click();
+			Thread.sleep(4000);
+			Assert.assertEquals(Updatednotestoastmessage.getText(), "Note updated successfully.");
+			TestContext.getWait().until(ExpectedConditions.visibilityOf(Updatednotestoastmessage));
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(moreicon)).click();
+			// TestContext.getWait().until(ExpectedConditions.elementToBeClickable(undobutton)).click();
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			TestContext.getLogger().error(methodName);
+
+		}
+		return this;
+	}
+
 }
