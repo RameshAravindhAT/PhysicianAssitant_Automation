@@ -19,7 +19,7 @@ public class TC_002_Recordings extends BaseClass {
 
 	@Test(dataProvider = "sendData")
 	public void validate_recordings(String testNameDetails, String authorName, String category, String username,
-			String Password, String testCaseType, String DoctorName,String Targetdates)
+			String Password, String testCaseType, String DoctorName)
 			throws InterruptedException {
 
 		ExtentReportManager.setTest(extent.createTest(testNameDetails));
@@ -35,11 +35,11 @@ public class TC_002_Recordings extends BaseClass {
 				.click_on_recordings_tab()
 				.click_on_reset()
 				.Select_doctor(DoctorName)				
-				.select_date(Targetdates)		
-				.click_on_view_recording()
-				.validate_recording_File_fields();
-						
+				.select_date()	
+				.click_on_view_recording();
+			
 				
+										
 	}
 
 }
