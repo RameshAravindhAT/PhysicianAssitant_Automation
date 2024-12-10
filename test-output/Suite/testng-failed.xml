@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" parallel="classes" name="LoginTest_Chrome(failed)">
+  <test thread-count="5" name="LoginTest_Chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testPackage.TC_002_Recordings">
+      <class name="testPackage.TC_007_Recordingfilepage">
         <methods>
-          <include name="validate_recordings"/>
+          <include name="validate_recordings" invocation-numbers="0"/>
           <include name="setUp"/>
-          <include name="testcasedetails"/>
           <include name="tearDown"/>
+          <include name="testcasedetails"/>
           <include name="stopReports"/>
           <include name="startReports"/>
         </methods>
-      </class> <!-- testPackage.TC_002_Recordings -->
+      </class> <!-- testPackage.TC_007_Recordingfilepage -->
     </classes>
   </test> <!-- LoginTest_Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

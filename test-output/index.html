@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Suite" class="navigator-link ">
-                    <span>testngexplore.xml</span>
+                    <span>testngexplore2.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -103,7 +103,7 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="testPackage.TC_002_Recordings" class="method navigator-link" hash-for-method="validate_recordings">validate_recordings</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="testPackage.TC_007_Recordingfilepage" class="method navigator-link" hash-for-method="validate_recordings(Validate recording file page with all functionalities, Teju, Regression, thejaswini+devscribe@navadh...)">validate_recordings(Validate recording file page with all functionalities, Teju, Regression, thejaswini+devscribe@navadh...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -121,25 +121,20 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">testPackage.TC_002_Recordings</span>
+              <span class="class-name">testPackage.TC_007_Recordingfilepage</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="validate_recordings">
-                  </a> <!-- validate_recordings -->
+                  <a name="validate_recordings(Validate recording file page with all functionalities, Teju, Regression, thejaswini+devscribe@navadh...)">
+                  </a> <!-- validate_recordings(Validate recording file page with all functionalities, Teju, Regression, thejaswini+devscribe@navadh...) -->
                   <span class="method-name">validate_recordings</span>
-                  <div class="stack-trace">org.testng.internal.reflect.MethodMatcherException: 
-[public void testPackage.TC_002_Recordings.validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.InterruptedException] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
-Data provider mismatch
-Method: validate_recordings([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7])
-Arguments: [(java.lang.String) Validate login feature with valid credentials and filestatus Flow,(java.lang.String) Teju,(java.lang.String) Regression,(java.lang.String) thejaswini+devscribe@navadhiti.com,(java.lang.String) Teju@5555,(java.lang.String) Positive,(java.lang.String) Teju two,(java.lang.String) `27/09/2024`,(java.lang.String) ,(java.lang.String) ]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-... Removed 8 stack frames
+                  <span class="parameters">(Validate recording file page with all functionalities,Teju,Regression,thejaswini+devscribe@navadhiti.com,Teju@5555,Positive,Teju two)</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [rec-1778] but found [rec-1776]
+	at pageObjects.PG_002_Recordings.validate_recording_File_fields(PG_002_Recordings.java:219)
+	at testPackage.TC_007_Recordingfilepage.validate_recordings(TC_007_Recordingfilepage.java:38)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 33 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
@@ -148,17 +143,17 @@ Arguments: [(java.lang.String) Validate login feature with valid credentials and
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/home/navadhiti/git/PhysicianAssitant_Automation/testngexplore.xml</span>
+            <span class="header-content">/home/navadhiti/git/PhysicianAssitant_Automation/testngexplore2.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; parallel=&quot;classes&quot; name=&quot;LoginTest_Chrome&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;LoginTest_Chrome&quot;&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testPackage.TC_002_Recordings&quot;/&gt;
+      &lt;class name=&quot;testPackage.TC_007_Recordingfilepage&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- LoginTest_Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -201,13 +196,13 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'validate_recordings')
-data.setCell(0, 2, 'testPackage.TC_002_Recordings')
-data.setCell(0, 3, 1639);
+data.setCell(0, 2, 'testPackage.TC_007_Recordingfilepage')
+data.setCell(0, 3, 78167);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -233,18 +228,32 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testPackage.TC_002_Recordings</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testPackage.TC_007_Recordingfilepage</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">startReports</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
               <div class="configuration-class before">
                 <span class="method-name">testcasedetails</span>
-                <span class="method-start">708 ms</span>
+                <span class="method-start">378 ms</span>
               </div> <!-- configuration-class before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome)</span>
+                <span class="method-start">1312 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">validate_recordings(Validate recording file page with all functionalities, Teju, Regression, thejaswini+devscribe@navadh...)</span>
+                <span class="method-start">8365 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">86704 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
                 <span class="method-name">stopReports</span>
-                <span class="method-start">2440 ms</span>
+                <span class="method-start">86894 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

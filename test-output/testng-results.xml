@@ -2,58 +2,125 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-27T16:59:50 IST" name="Suite" finished-at="2024-11-27T16:59:52 IST" duration-ms="1763">
+  <suite started-at="2024-12-09T15:12:21 IST" name="Suite" finished-at="2024-12-09T15:13:48 IST" duration-ms="86516">
     <groups>
     </groups>
-    <test started-at="2024-11-27T16:59:50 IST" name="LoginTest_Chrome" finished-at="2024-11-27T16:59:52 IST" duration-ms="1763">
-      <class name="testPackage.TC_002_Recordings">
-        <test-method is-config="true" signature="startReports()[pri:0, instance:testPackage.TC_002_Recordings@4135c3b]" started-at="2024-11-27T16:59:50 IST" name="startReports" finished-at="2024-11-27T16:59:50 IST" duration-ms="615" status="PASS">
+    <test started-at="2024-12-09T15:12:21 IST" name="LoginTest_Chrome" finished-at="2024-12-09T15:13:48 IST" duration-ms="86516">
+      <class name="testPackage.TC_007_Recordingfilepage">
+        <test-method is-config="true" signature="startReports()[pri:0, instance:testPackage.TC_007_Recordingfilepage@459e9125]" started-at="2024-12-09T15:12:21 IST" name="startReports" finished-at="2024-12-09T15:12:21 IST" duration-ms="347" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReports -->
-        <test-method is-config="true" signature="testcasedetails()[pri:0, instance:testPackage.TC_002_Recordings@4135c3b]" started-at="2024-11-27T16:59:50 IST" name="testcasedetails" finished-at="2024-11-27T16:59:50 IST" duration-ms="5" status="PASS">
+        <test-method is-config="true" signature="testcasedetails()[pri:0, instance:testPackage.TC_007_Recordingfilepage@459e9125]" started-at="2024-12-09T15:12:21 IST" name="testcasedetails" finished-at="2024-12-09T15:12:21 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcasedetails -->
-        <test-method signature="validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:testPackage.TC_002_Recordings@4135c3b]" started-at="2024-11-27T16:59:50 IST" name="validate_recordings" data-provider="sendData" finished-at="2024-11-27T16:59:52 IST" duration-ms="1639" status="FAIL">
-          <exception class="org.testng.internal.reflect.MethodMatcherException">
+        <test-method is-config="true" signature="setUp(java.lang.String)[pri:0, instance:testPackage.TC_007_Recordingfilepage@459e9125]" started-at="2024-12-09T15:12:22 IST" name="setUp" finished-at="2024-12-09T15:12:29 IST" duration-ms="7051" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:testPackage.TC_007_Recordingfilepage@459e9125]" started-at="2024-12-09T15:12:29 IST" name="validate_recordings" data-provider="sendData" finished-at="2024-12-09T15:13:48 IST" duration-ms="78167" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Validate recording file page with all functionalities]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Teju]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Regression]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[thejaswini+devscribe@navadhiti.com]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[Teju@5555]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[Positive]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[Teju two]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[
-[public void testPackage.TC_002_Recordings.validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.InterruptedException] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
-Data provider mismatch
-Method: validate_recordings([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7])
-Arguments: [(java.lang.String) Validate login feature with valid credentials and filestatus Flow,(java.lang.String) Teju,(java.lang.String) Regression,(java.lang.String) thejaswini+devscribe@navadhiti.com,(java.lang.String) Teju@5555,(java.lang.String) Positive,(java.lang.String) Teju two,(java.lang.String) `27/09/2024`,(java.lang.String) ,(java.lang.String) ]]]>
+              <![CDATA[expected [rec-1778] but found [rec-1776]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.testng.internal.reflect.MethodMatcherException: 
-[public void testPackage.TC_002_Recordings.validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.InterruptedException] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
-Data provider mismatch
-Method: validate_recordings([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7])
-Arguments: [(java.lang.String) Validate login feature with valid credentials and filestatus Flow,(java.lang.String) Teju,(java.lang.String) Regression,(java.lang.String) thejaswini+devscribe@navadhiti.com,(java.lang.String) Teju@5555,(java.lang.String) Positive,(java.lang.String) Teju two,(java.lang.String) `27/09/2024`,(java.lang.String) ,(java.lang.String) ]
-at org.testng.internal.reflect.DataProviderMethodMatcher.getConformingArguments(DataProviderMethodMatcher.java:46)
-at org.testng.internal.Parameters.injectParameters(Parameters.java:915)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+              <![CDATA[java.lang.AssertionError: expected [rec-1778] but found [rec-1776]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at org.testng.Assert.assertEquals(Assert.java:666)
+at pageObjects.PG_002_Recordings.validate_recording_File_fields(PG_002_Recordings.java:219)
+at testPackage.TC_007_Recordingfilepage.validate_recordings(TC_007_Recordingfilepage.java:38)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
 at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
 at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
-at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-at java.base/java.lang.Thread.run(Thread.java:840)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.testng.internal.reflect.MethodMatcherException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validate_recordings -->
-        <test-method is-config="true" signature="stopReports()[pri:0, instance:testPackage.TC_002_Recordings@4135c3b]" started-at="2024-11-27T16:59:52 IST" name="stopReports" finished-at="2024-11-27T16:59:53 IST" duration-ms="970" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testPackage.TC_007_Recordingfilepage@459e9125]" started-at="2024-12-09T15:13:48 IST" name="tearDown" finished-at="2024-12-09T15:13:48 IST" duration-ms="160" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="stopReports()[pri:0, instance:testPackage.TC_007_Recordingfilepage@459e9125]" started-at="2024-12-09T15:13:48 IST" name="stopReports" finished-at="2024-12-09T15:13:48 IST" duration-ms="339" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- stopReports -->
-      </class> <!-- testPackage.TC_002_Recordings -->
+      </class> <!-- testPackage.TC_007_Recordingfilepage -->
     </test> <!-- LoginTest_Chrome -->
   </suite> <!-- Suite -->
 </testng-results>

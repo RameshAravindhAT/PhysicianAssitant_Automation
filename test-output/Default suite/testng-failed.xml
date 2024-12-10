@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testPackage.TC_002_Recordings">
+      <class name="testPackage.TC_007_Recordingfilepage">
         <methods>
           <include name="validate_recordings"/>
           <include name="setUp"/>
-          <include name="tearDown"/>
           <include name="testcasedetails"/>
+          <include name="tearDown"/>
           <include name="startReports"/>
           <include name="stopReports"/>
         </methods>
-      </class> <!-- testPackage.TC_002_Recordings -->
+      </class> <!-- testPackage.TC_007_Recordingfilepage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

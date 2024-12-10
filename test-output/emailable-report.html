@@ -9,20 +9,14 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">LoginTest_Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">1,763</td><td></td><td></td></tr>
+<tr><td><a href="#t0">LoginTest_Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">86,516</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">LoginTest_Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testPackage.TC_002_Recordings</td><td><a href="#m0">validate_recordings</a></td><td rowspan="1">1732706990806</td><td rowspan="1">1639</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">LoginTest_Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">testPackage.TC_007_Recordingfilepage</td><td><a href="#m0">validate_recordings</a></td><td rowspan="1">1733737349946</td><td rowspan="1">78167</td></tr></tbody>
 </table>
-<h2>LoginTest_Chrome</h2><h3 id="m0">testPackage.TC_002_Recordings#validate_recordings</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.testng.internal.reflect.MethodMatcherException: 
-[public void testPackage.TC_002_Recordings.validate_recordings(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.InterruptedException] has no parameters defined but was found to be using a data provider (either explicitly specified or inherited from class level annotation).
-Data provider mismatch
-Method: validate_recordings([java.lang.String arg0, java.lang.String arg1, java.lang.String arg2, java.lang.String arg3, java.lang.String arg4, java.lang.String arg5, java.lang.String arg6, java.lang.String arg7])
-Arguments: [(java.lang.String) Validate login feature with valid credentials and filestatus Flow,(java.lang.String) Teju,(java.lang.String) Regression,(java.lang.String) thejaswini+devscribe@navadhiti.com,(java.lang.String) Teju@5555,(java.lang.String) Positive,(java.lang.String) Teju two,(java.lang.String) `27/09/2024`,(java.lang.String) ,(java.lang.String) ]
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-	at java.base/java.lang.Thread.run(Thread.java:840)
-... Removed 8 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>LoginTest_Chrome</h2><h3 id="m0">testPackage.TC_007_Recordingfilepage#validate_recordings</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th><th>Parameter #3</th><th>Parameter #4</th><th>Parameter #5</th><th>Parameter #6</th><th>Parameter #7</th></tr><tr class="param stripe"><td>Validate recording file page with all functionalities</td><td>Teju</td><td>Regression</td><td>thejaswini+devscribe@navadhiti.com</td><td>Teju@5555</td><td>Positive</td><td>Teju two</td></tr><tr><th colspan="7">Exception</th></tr><tr><td colspan="7"><div class="stacktrace">java.lang.AssertionError: expected [rec-1778] but found [rec-1776]
+	at pageObjects.PG_002_Recordings.validate_recording_File_fields(PG_002_Recordings.java:219)
+	at testPackage.TC_007_Recordingfilepage.validate_recordings(TC_007_Recordingfilepage.java:38)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>
