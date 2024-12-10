@@ -192,7 +192,7 @@ public class PG_002_Recordings extends BaseClass{
 	}
 
 	public PG_007_Recordingfilepage validate_recording_File_fields() {
-		String[] expectedData = { "Teju two", "REC-1774", "scribe review pending" };
+		String[] expectedData = { "Teju two", "REC-1778", "scribe review pending" };
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 			// Validate that the array has all required values
