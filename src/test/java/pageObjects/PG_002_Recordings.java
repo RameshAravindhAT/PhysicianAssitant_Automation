@@ -3,6 +3,7 @@ package pageObjects;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,6 +44,41 @@ public class PG_002_Recordings extends BaseClass{
 
 	@FindBy(xpath = "//button[@title='Clear value']")
 	WebElement cleardate;
+	
+	@FindBy(xpath = "(//span[contains(@class,'MuiBadge-badge MuiBadge-standard')])[1]")
+	WebElement statusfilecount;
+	
+	@FindBy(xpath = "(//*[name()='svg'][@data-testid='EditIcon'])[1]")
+	WebElement Editicon;
+
+	@FindBy(xpath = "//div[contains(@class,'MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary')]//textarea")
+	WebElement Editbox;
+
+	@FindBy(xpath = "//button[text()='Cancel']")
+	WebElement cancelbutton;
+
+	@FindBy(xpath = "//button[text()='Next']")
+	WebElement Nextbutton;
+
+	@FindBy(xpath = "//button[text()='Save']")
+	WebElement savebutton;
+
+	@FindBy(xpath = "(//button[text()='Save'])[2]")
+	WebElement confirmsave;
+	@FindBy(xpath = "//button[text()='No']")
+	WebElement Nobutton;
+
+	@FindBy(xpath = "//button[text()='Yes']")
+	WebElement yesbutton;
+
+	@FindBy(xpath = "//div[text()='Note updated successfully.']")
+	WebElement Updatednotestoastmessage;
+
+	@FindBy(xpath = "//div[contains(@class,'_icon_')]")
+	WebElement backarrow;
+	
+	@FindBy(xpath = "//button[text()='Undo']")
+	WebElement undobutton;
 
 	public PG_002_Recordings click_on_reset() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
@@ -190,9 +226,44 @@ public class PG_002_Recordings extends BaseClass{
 		}
 		return this;
 	}
+	public PG_002_Recordings update_patient_name() {
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+		try {
+			Thread.sleep(3000);
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editicon)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox)).sendKeys(Keys.CONTROL + "a");
+			Editbox.sendKeys(Keys.DELETE);
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox)).sendKeys("Martin Mathew");
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Nextbutton)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click();
+
+			// Conditional "go back confirmation" logic
+			boolean isGoBackRequired = true; // Replace this with your actual condition check
+			if (isGoBackRequired) {
+				TestContext.getWait().until(ExpectedConditions.elementToBeClickable(backarrow)).click();
+				Thread.sleep(3000);
+				confirmsave.click();
+			} else {
+				// Save preview logic
+				TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click();
+				TestContext.getWait().until(ExpectedConditions.elementToBeClickable(yesbutton)).click();
+			}
+
+			TestContext.getWait().until(ExpectedConditions.visibilityOf(Updatednotestoastmessage));
+			Assert.assertEquals(Updatednotestoastmessage.getText(), "Note updated successfully.");
+
+			ExtentReportManager.reportStep(methodName, "pass");
+			TestContext.getLogger().info(methodName);
+		} catch (Exception e) {
+			ExtentReportManager.reportStep(methodName, "fail");
+			TestContext.getLogger().error(methodName);
+			e.printStackTrace();
+		}
+		return this;
+	}
 
 	public PG_007_Recordingfilepage validate_recording_File_fields() {
-		String[] expectedData = { "Teju two", "REC-1778", "scribe review pending" };
+		String[] expectedData = { "Teju two", "REC-1800", "scribe review pending" };
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
 			// Validate that the array has all required values

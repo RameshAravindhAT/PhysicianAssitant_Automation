@@ -36,10 +36,7 @@ public class TC_002_Recordings extends BaseClass {
 				.click_on_reset()
 				.Select_doctor(DoctorName)				
 				.select_date()	
-				.click_on_view_recording();
-			
-				
-										
+				.click_on_view_recording()
+				.update_patient_name();										
 	}
-
 }

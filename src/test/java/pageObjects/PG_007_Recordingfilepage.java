@@ -2,10 +2,10 @@ package pageObjects;
 
 //Testing Purpose
 
-
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -44,6 +44,9 @@ public class PG_007_Recordingfilepage extends BaseClass {
 	@FindBy(xpath = "//button[text()='Save']")
 	WebElement savebutton;
 
+	@FindBy(xpath = "(//button[text()='Save'])[2]")
+	WebElement confirmsave;
+	
 	@FindBy(xpath = "//button[text()='No']")
 	WebElement Nobutton;
 
@@ -68,8 +71,7 @@ public class PG_007_Recordingfilepage extends BaseClass {
 	@FindBy(xpath = "(//*[name()='svg'][@data-testid='MicIcon'])")
 	WebElement Micbutton;
 
-	@FindBy(xpath = "//button[text()='Undo']")
-	WebElement undobutton;
+	
 
 	@FindBy(xpath = "//button[contains(text(),'Comments')]")
 	WebElement commentstab;
@@ -80,15 +82,47 @@ public class PG_007_Recordingfilepage extends BaseClass {
 	@FindBy(xpath = "//*[name()='svg'][@data-testid='PauseIcon']")
 	WebElement pausebutton;
 
-	@FindBy(xpath = "(//*[name()='svg'][@data-testid='ArrowDropDownIcon'])[1]")
+	@FindBy(xpath = "//div[contains(@aria-haspopup,'listbox')]")
 	WebElement versiondropdownarrow;
 
-	@FindBy(xpath = "(//li[contains(@class,'MuiButtonBase-root MuiMenuItem-root')])[1]")
+	@FindBy(xpath = "//li[contains(text(),'1')]")
 	WebElement selectversionnumber;
-		
+
 	@FindBy(xpath = "//div[contains(@class,'_icon_')]")
 	WebElement backarrow;
-	
+
+	/*
+	 * public PG_007_Recordingfilepage update_patient_name() { String methodName =
+	 * Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
+	 * try { Thread.sleep(3000);
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editicon)
+	 * ).click();
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox))
+	 * .sendKeys(Keys.CONTROL + "a"); Editbox.sendKeys(Keys.DELETE);
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox))
+	 * .sendKeys("Martin Mathew");
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(
+	 * Nextbutton)).click();
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(
+	 * savebutton)).click();
+	 * 
+	 * //go back confirmation backarrow.click(); savebutton.click();
+	 * 
+	 * // save preview
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(
+	 * savebutton)).click();
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(yesbutton
+	 * )).click(); TestContext.getWait().until(ExpectedConditions.visibilityOf(
+	 * Updatednotestoastmessage));
+	 * Assert.assertEquals(Updatednotestoastmessage.getText(),
+	 * "Note updated successfully."); //
+	 * TestContext.getWait().until(ExpectedConditions.elementToBeClickable(
+	 * undobutton)).click(); ExtentReportManager.reportStep(methodName, "pass");
+	 * TestContext.getLogger().info(methodName); } catch (Exception e) {
+	 * ExtentReportManager.reportStep(methodName, "fail");
+	 * TestContext.getLogger().error(methodName); e.printStackTrace(); } return
+	 * this; }
+	 */
 
 	public PG_007_Recordingfilepage update_patient_name() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
@@ -100,15 +134,22 @@ public class PG_007_Recordingfilepage extends BaseClass {
 			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Editbox)).sendKeys("Martin Mathew");
 			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(Nextbutton)).click();
 			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click();
-			/*
-			 * //go back confirmation backarrow.click(); savebutton.click();
-			 */
-			// save preview
-			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click();
-			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(yesbutton)).click();
+
+			// Conditional "go back confirmation" logic
+			boolean isGoBackRequired = false; // Replace this with your actual condition check
+			if (isGoBackRequired) {
+				TestContext.getWait().until(ExpectedConditions.elementToBeClickable(backarrow)).click();
+				Thread.sleep(3000);
+				confirmsave.click();
+			} else {
+				// Save preview logic
+				TestContext.getWait().until(ExpectedConditions.elementToBeClickable(savebutton)).click();
+				TestContext.getWait().until(ExpectedConditions.elementToBeClickable(yesbutton)).click();
+			}
+
 			TestContext.getWait().until(ExpectedConditions.visibilityOf(Updatednotestoastmessage));
 			Assert.assertEquals(Updatednotestoastmessage.getText(), "Note updated successfully.");
-			// TestContext.getWait().until(ExpectedConditions.elementToBeClickable(undobutton)).click();
+
 			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
@@ -119,7 +160,7 @@ public class PG_007_Recordingfilepage extends BaseClass {
 		return this;
 	}
 
-	public PG_007_Recordingfilepage Copy_and_Paste_in_comments() {
+	public PG_007_Recordingfilepage Copy_All() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		String moreicon = "Copy All";
 		try {
@@ -139,7 +180,7 @@ public class PG_007_Recordingfilepage extends BaseClass {
 					TestContext.getWait().until(ExpectedConditions.visibilityOf(sendbutton)).click();
 				}
 			}
-			ExtentReportManager.reportStep(methodName + " :: " + Copiedmessage, "pass");
+			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
 		} catch (Exception e) {
 			ExtentReportManager.reportStep(methodName, "fail");
@@ -209,7 +250,7 @@ public class PG_007_Recordingfilepage extends BaseClass {
 					String xpath = "(//div[contains(@class,'MuiStack-root')])[2]//p[text()='File status :']/following-sibling::p[text()='"
 							+ expectedData + "']";
 					String text = TestContext.getDriver().findElement(By.xpath(xpath)).getText();
-					System.out.println(text);
+
 					Assert.assertEquals(text, "Doctor Accepted");
 				}
 			}
@@ -233,7 +274,7 @@ public class PG_007_Recordingfilepage extends BaseClass {
 	public PG_007_Recordingfilepage commentstab() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
 		try {
-			Thread.sleep(3000);
+
 			commentstab.click();
 			commentstextbox.sendKeys("hey doctor! i have edited the current version and check for approval");
 			sendbutton.click();
@@ -255,21 +296,19 @@ public class PG_007_Recordingfilepage extends BaseClass {
 
 	public PG_007_Recordingfilepage selectversion() {
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName().replace("_", " ");
-		try {
-			Thread.sleep(5000);
-			versiondropdownarrow.click();
-			Thread.sleep(3000);
-			selectversionnumber.click();
-			Thread.sleep(3000);
+		try {			
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(versiondropdownarrow)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(selectversionnumber)).click();
 			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().info(methodName);
-
-		} catch (Exception e) {
-			ExtentReportManager.reportStep(methodName, "fail");
+		} catch (ElementClickInterceptedException e) {
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(versiondropdownarrow)).click();
+			TestContext.getWait().until(ExpectedConditions.elementToBeClickable(selectversionnumber)).click();
+			ExtentReportManager.reportStep(methodName, "pass");
 			TestContext.getLogger().error(methodName);
 			e.printStackTrace();
-		}
-		return this;
-	}
+	    }
+	    return this;
+}
 
 }

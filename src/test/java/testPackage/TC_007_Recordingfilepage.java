@@ -36,13 +36,11 @@ public class TC_007_Recordingfilepage extends BaseClass {
 			.select_date()	
 			.click_on_view_recording()
 			.validate_recording_File_fields()
-			.Copy_and_Paste_in_comments()
+			.Copy_All()
 			.commentstab()
-			.update_patient_name()
+			.update_patient_name()			
 			.Send_for_approval()
-			.Mark_as_complete();
-			
-				
+			.Mark_as_complete();			
 	}	
 }
 
